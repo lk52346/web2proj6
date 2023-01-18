@@ -38,8 +38,8 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to)=>{
-  const publicPages = ["/login"];
-  const authRequired = !publicPages.includes(to.path);
+  const privatePages = ["/songs", "/game"];
+  const authRequired = privatePages.includes(to.path);
   const auth = useAuthStore();
   if (authRequired && !auth.isAuthenticated) {
     auth.setLandingUrl(to.fullPath);
